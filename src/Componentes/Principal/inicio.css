@@ -1,0 +1,33 @@
+.contenedor-canciones{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    width: 100%;
+    background-color: rgb(20, 12, 19);
+    grid-template-rows: 10%;
+    grid-template-columns: 8% 40% 30% 10% 5%;
+}
+.item_lista{
+    margin-top: 15px;
+    padding: 10px;
+    color: #fff;
+    height: 60px;
+    
+    
+}
+.item_lista > p{
+    margin: 0;
+    padding: 0;
+}
+.icono-play{
+    color:rgb(233, 57, 216);
+    cursor: pointer;
+}
+.icono-favoritos{
+    color: rgba(255, 255, 255, 0.4);
+}
+.icono-favoritos:hover {
+    color:rgb(233, 57, 216);
+    cursor: pointer;
+}
