@@ -14,6 +14,36 @@ const Inicio = () => {
       artista: 'Desconocido',
       album: 'Album',
       duracion: '3:10'
+    },
+    {
+      nombre: 'cancion 1',
+      artista: 'Desconocido',
+      album: 'Album',
+      duracion: '3:10'
+    },
+    {
+      nombre: 'cancion 1',
+      artista: 'Desconocido',
+      album: 'Album',
+      duracion: '3:10'
+    },
+    {
+      nombre: 'cancion 1',
+      artista: 'Desconocido',
+      album: 'Album',
+      duracion: '3:10'
+    },
+    {
+      nombre: 'cancion 1',
+      artista: 'Desconocido',
+      album: 'Album',
+      duracion: '3:10'
+    },
+    {
+      nombre: 'cancion 1',
+      artista: 'Desconocido',
+      album: 'Album',
+      duracion: '3:10'
     }
   ];
   const [play, setPlay] = useState({ estado: false, indice: -1 });
