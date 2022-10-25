@@ -31,3 +31,10 @@
     color:rgb(233, 57, 216);
     cursor: pointer;
 }
+.visitas{
+    position: absolute;
+    right: 0;
+    top: 0;
+    color: red;
+    
+}

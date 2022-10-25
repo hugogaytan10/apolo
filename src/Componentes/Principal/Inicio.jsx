@@ -48,8 +48,29 @@ const Inicio = () => {
   ];
   const [play, setPlay] = useState({ estado: false, indice: -1 });
   const [pause, setPause] = useState({ estado: false, indice: -1 });
+  const [countVisited, setCountVisited] = useState('');
+  const setLocalStorage = async (visit) => {
+    window.localStorage.setItem('visitas', visit);
+  }
+  const removeLocalStorage = async () => {
+    window.localStorage.removeItem('visitas');
+  }
+  useEffect(() => {
+    let local = window.localStorage.getItem('visitas') ? JSON.parse(window.localStorage.getItem('visitas')) : ""
+    if (local === '') {
+      window.localStorage.setItem('visitas', 0);
+    }
+    else {
+      removeLocalStorage();
+      local++;
+      setLocalStorage(JSON.stringify(local));
+      setCountVisited(local);
+    }
 
+  }, [])
   return (
+    <>
+    <p className='visitas'>{countVisited}</p>
     <ul className='contenedor-canciones' id='contenedor-canciones'>
       {
         listaCanciones.map((cancion, idx) => {
@@ -97,6 +118,7 @@ const Inicio = () => {
         })
       }
     </ul>
+    </>
   )
 }
 
