@@ -32,7 +32,7 @@ const Menu = () => {
             <ul className='contenedor-items' id = 'contendor-items'>
                 {
                     etiquetas.map((etiqueta, idx) => { return (
-                        <p><Link to={links[idx]} className='item-nav'>{etiqueta}</Link></p>
+                        <p key={idx}><Link to={links[idx]} className='item-nav'>{etiqueta}</Link></p>
                     )})
                 }
             </ul>
