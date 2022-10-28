@@ -1,7 +1,7 @@
 .nav-bar {
     height: 100vh;
     width: 15%;
-    background-color: rgb(69, 32, 67);
+    background-color: #081032;
     transition: all 0.5s;
 }
 .iconos{
@@ -34,7 +34,7 @@
 
 .item-nav:hover {
     cursor: pointer;
-    background-color: rgb(46, 13, 44);
+    background-color: #232e66;
 }
 
 #hamburguesita {

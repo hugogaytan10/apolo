@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './inicio.css'
 import { FaHeart, FaPlay, FaPause } from 'react-icons/fa';
+import { ProgressMusic } from './ProgressMusic';
 const Inicio = () => {
   const listaCanciones = [
     {
@@ -13,19 +14,19 @@ const Inicio = () => {
       nombre: 'cancion 1',
       artista: 'Desconocido',
       album: 'Album',
-      duracion: '3:10'
+      duracion: '2:10'
     },
     {
       nombre: 'cancion 1',
       artista: 'Desconocido',
       album: 'Album',
-      duracion: '3:10'
+      duracion: '3:30'
     },
     {
       nombre: 'cancion 1',
       artista: 'Desconocido',
       album: 'Album',
-      duracion: '3:10'
+      duracion: '4:10'
     },
     {
       nombre: 'cancion 1',
@@ -49,6 +50,7 @@ const Inicio = () => {
   const [play, setPlay] = useState({ estado: false, indice: -1 });
   const [pause, setPause] = useState({ estado: false, indice: -1 });
   const [countVisited, setCountVisited] = useState('');
+  const [cancion, setCancion] = useState('');
   const setLocalStorage = async (visit) => {
     window.localStorage.setItem('visitas', visit);
   }
@@ -68,57 +70,66 @@ const Inicio = () => {
     }
 
   }, [])
+  useEffect(() => {
+  }, [cancion])
   return (
-    <>
-    <p className='visitas'>{countVisited}</p>
-    <ul className='contenedor-canciones' id='contenedor-canciones'>
+    <div className='listas-canciones'>
+      <p className='visitas'>{countVisited}</p>
+      <ul className='contenedor-canciones' id='contenedor-canciones'>
+        {
+          listaCanciones.map((cancion, idx) => {
+            return (
+              <>
+                {
+
+                  (pause.estado && idx === pause.indice)
+                    ?
+                    <li
+                      className='item_lista'
+                      onClick={() => { setPause({ ...pause, estado: false, indice: -1 }); }}>
+                      <FaPause className='icono-play' />
+                    </li>
+                    :
+                    <li
+                      className='item_lista'
+                      onMouseOver={() => { setPlay({ ...play, estado: true, indice: idx }) }}
+                      onMouseLeave={() => { setPlay({ ...play, estado: false, indice: -1 }) }}
+                      onClick={() => { setPause({ ...pause, estado: true, indice: idx }); setCancion(cancion.duracion); }} >
+                      {
+                        (play.estado && play.indice === idx)
+                          ?
+                          <FaPlay className='icono-play' />
+                          :
+                          <p>#{idx + 1}</p>
+                      }
+                    </li>
+                }
+
+
+                <li key={idx} className='item_lista'>
+                  <p>{cancion.nombre}</p> <p>{cancion.artista}</p>
+                </li>
+                <li className='item_lista'>
+                  {cancion.album}
+                </li>
+                <li className='item_lista'>
+                  {cancion.duracion}
+                </li>
+                <li className='item_lista'>
+                  <FaHeart className='icono-favoritos' />
+                </li>
+              </>
+            )
+          })
+        }
+      </ul>
       {
-        listaCanciones.map((cancion, idx) => {
-          return (
-            <>
-              {
-                (pause.estado && idx === pause.indice)
-                  ?
-                  <li key={idx}
-                    className='item_lista'
-                    onClick={() => { setPause({ ...pause, estado: false, indice: -1 }) }}>
-                    <FaPause className='icono-play' />
-                  </li>
-                  :
-                  <li key={idx}
-                    className='item_lista'
-                    onMouseOver={() => { setPlay({ ...play, estado: true, indice: idx }) }}
-                    onMouseLeave={() => { setPlay({ ...play, estado: false, indice: -1 }) }}
-                    onClick={() => { setPause({ ...pause, estado: true, indice: idx }) }} >
-                    {
-                      (play.estado && play.indice === idx)
-                        ?
-                        <FaPlay className='icono-play' />
-                        :
-                        <p>#{idx + 1}</p>
-                    }
-                  </li>
-              }
-
-
-              <li key={idx} className='item_lista'>
-                <p>{cancion.nombre}</p> <p>{cancion.artista}</p>
-              </li>
-              <li className='item_lista'>
-                {cancion.album}
-              </li>
-              <li className='item_lista'>
-                {cancion.duracion}
-              </li>
-              <li className='item_lista'>
-                <FaHeart className='icono-favoritos' />
-              </li>
-            </>
-          )
-        })
+        cancion !== '' &&
+        <div className='bar'>
+          <ProgressMusic time={cancion} />
+        </div>
       }
-    </ul>
-    </>
+    </div>
   )
 }
 
