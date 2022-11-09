@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import './inicio.css'
-import { FaHeart, FaPlay, FaPause } from 'react-icons/fa';
+import React, { useEffect, useState } from 'react';
+import { FaHeart, FaPause, FaPlay } from 'react-icons/fa';
+import './inicio.css';
 import { ProgressMusic } from './ProgressMusic';
 const Inicio = () => {
   const listaCanciones = [
@@ -8,13 +8,15 @@ const Inicio = () => {
       nombre: 'cancion 1',
       artista: 'Desconocido',
       album: 'Album',
-      duracion: '3:10'
+      duracion: '0:10',
+      link: 'https://www.sonolibro.com/assets/uploads/preview/pr_los_vigilantes_de_los_das.mp3'
     },
     {
       nombre: 'cancion 1',
       artista: 'Desconocido',
       album: 'Album',
-      duracion: '2:10'
+      duracion: '0:10',
+      link: 'https://www.sonolibro.com/audio/pr-efecto-midas.mp3'
     },
     {
       nombre: 'cancion 1',
@@ -51,6 +53,7 @@ const Inicio = () => {
   const [pause, setPause] = useState({ estado: false, indice: -1 });
   const [countVisited, setCountVisited] = useState('');
   const [cancion, setCancion] = useState('');
+  const [song, setSong] = useState('');
   const setLocalStorage = async (visit) => {
     window.localStorage.setItem('visitas', visit);
   }
@@ -81,12 +84,14 @@ const Inicio = () => {
             return (
               <>
                 {
-
                   (pause.estado && idx === pause.indice)
                     ?
                     <li
                       className='item_lista'
-                      onClick={() => { setPause({ ...pause, estado: false, indice: -1 }); }}>
+                      onClick={() => {
+                        setSong(cancion.link)
+                        setPause({ estado: !pause, indice: -1 });
+                      }}>
                       <FaPause className='icono-play' />
                     </li>
                     :
@@ -94,18 +99,20 @@ const Inicio = () => {
                       className='item_lista'
                       onMouseOver={() => { setPlay({ ...play, estado: true, indice: idx }) }}
                       onMouseLeave={() => { setPlay({ ...play, estado: false, indice: -1 }) }}
-                      onClick={() => { setPause({ ...pause, estado: true, indice: idx }); setCancion(cancion.duracion); }} >
+                      onClick={() => {
+                        setSong(cancion.link)
+                        setPause({ ...pause, estado: true, indice: idx });
+                        setCancion(cancion.duracion);
+                      }} >
                       {
                         (play.estado && play.indice === idx)
                           ?
                           <FaPlay className='icono-play' />
                           :
-                          <p>#{idx + 1}</p>
+                          <p># {idx + 1}</p>
                       }
                     </li>
                 }
-
-
                 <li key={idx} className='item_lista'>
                   <p>{cancion.nombre}</p> <p>{cancion.artista}</p>
                 </li>
@@ -126,7 +133,7 @@ const Inicio = () => {
       {
         cancion !== '' &&
         <div className='bar'>
-          <ProgressMusic time={cancion} />
+          <ProgressMusic time={cancion} song={song} />
         </div>
       }
     </div>
