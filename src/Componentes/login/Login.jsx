@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './Login.css'
-import { Link } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from '../../App';
+import ListaReproduccion from '../ListaReproduccion/ListaReproduccion';
 const Login = () => {
-
+    //LLAMOS AL CONTEXTO PARA DAR PIE AL LOGIN
+    const { handleChangeUser } = useContext(UserContext);
+    const handleSubmit = async() => {
+        handleChangeUser('HUGO');
+    }
     return (
         <div className='contenedor-login'>
             <div className='contenedor-img'></div>
             <input type='email' placeholder='hello@email.com' className='input-login' />
-            <input type='password' placeholder='********' className='input-login'/>
-            <button className='btn-login'><Link to={"/Inicio"} className='item-nav'>Log In</Link></button>
-            
+            <input type='password' placeholder='********' className='input-login' />
+            <button className='btn-login' onClick={() => { handleSubmit() }}>Log In</button>
+
         </div>
     )
 }
