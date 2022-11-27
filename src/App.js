@@ -7,6 +7,7 @@ import Inicio from './Componentes/Principal/Inicio';
 import Menu from './Componentes/Menu/Menu';
 import Lista from './Componentes/ListaReproduccion/ListaReproduccion';
 import { appReducer } from './Componentes/Context/Reducer';
+import { Perfil } from './Componentes/perfil/Perfil';
 
 export const UserContext = createContext(null);
 function App() {
@@ -38,6 +39,7 @@ function App() {
                 <Route path='/Login' element={<Login />}></Route>
                 <Route path='/Inicio' element={<Inicio />}></Route>
                 <Route path='/ListaReproduccion' element={<Lista />}></Route>
+                <Route path='/Perfil' element={<Perfil />}></Route>
               </>
               :
               <>
