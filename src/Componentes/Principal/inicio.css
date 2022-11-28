@@ -1,3 +1,6 @@
+.listas-canciones{
+    width: 100%;
+}
 .contenedor-canciones{
     list-style: none;
     padding: 0;
@@ -39,4 +42,7 @@
     font-weight: bold;
     color: red;
     
+}
+
+.bar{
 }

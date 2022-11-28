@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 import './menu.css';
 const Menu = () => {
     const [hamburguesa, setHamburguesa] = useState(false);
-    const etiquetas = ['Inicio', 'Lista de reproducción'];
-    const links = ['/Inicio', '/ListaReproduccion'];
+    const etiquetas = ['Inicio', 'Lista de reproducción', 'Perfil'];
+    const links = ['/Inicio', '/ListaReproduccion', '/Perfil'];
     const menuHamburguesa = async() => {
         const menu = document.getElementById('contendor-items');
         const nav = document.getElementById('nav-bar');
@@ -32,7 +32,7 @@ const Menu = () => {
             <ul className='contenedor-items' id = 'contendor-items'>
                 {
                     etiquetas.map((etiqueta, idx) => { return (
-                        <p><Link to={links[idx]} className='item-nav'>{etiqueta}</Link></p>
+                        <p key={idx}><Link to={links[idx]} className='item-nav'>{etiqueta}</Link></p>
                     )})
                 }
             </ul>

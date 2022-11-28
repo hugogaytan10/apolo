@@ -5,9 +5,11 @@ body{
 }
 
 .contenedor-login{
-    position: relative;
     display: flex;
-    margin: auto;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,50%);
     height: 400px;
     width: 350px;
     background-color:  #081032;
@@ -17,19 +19,20 @@ body{
     box-shadow: 1px 2px 25px #FFE500;
     transition: all 1s;
 }
-.contenedor-login:hover{
+.contenedor-login:hover, .contenedor-registro:hover{
     box-shadow: 1px 1px 15px #FFE500,
     -1px -1px 10px #FFE500;
 }
+
 .contenedor-img{
     position: absolute;
     height: 100px;
     width: 100px;
     border-radius: 50%;
     background-color: #A6A6A6;
-    left: 0;
+    left: 50%;
     top: 0;
-    transform: translate(130%,-50%);
+    transform: translate(-50%,-50%);
     box-shadow: 2px 1px 15px #FFE500;
 }
 .input-login{
@@ -43,21 +46,66 @@ body{
     border-radius: 5px;
     color: #fff;
 }
-.btn-login{
+.btn-login, .btn-agregar{
     margin: 0px auto;
     margin-top: 10px;
     padding: 10px;
     width: 200px;
     height: 45px;
-    border-radius: 20px;
+    border-radius: 16px;
     border-color: #FFE500;
     background-color: transparent;
     transition: all 0.5s;
     color: #fff;
     font-weight: bold;
+    font-size: 1.2em;
 }
-.btn-login:hover{
+.btn-login:hover, .btn-agregar:hover{
     cursor: pointer;
     background-color:  #FFE500;
     color: black;
+}
+.no-tengo-cuenta{
+    color: #fff;
+    text-align: right;
+    margin-right: 10px;
+    font-size: 1.1em;
+    cursor: pointer;
+}
+.contenedor-registro{
+    position: absolute;
+    background-color:  #081032;
+    border-radius: 20px;
+    box-shadow: 1px 2px 25px #FFE500;
+    transition: all 1s;
+    height: 500px;
+    width: 400px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.input-registro{
+    height: 25px;
+    width: 75%;
+    margin: 0px auto;
+    padding: 5px;
+    margin: auto;
+    margin-top: 10px;
+    background-color:#A6A6A6;
+    border: 2px solid #FFE500;
+    border-radius: 5px;
+    color: #fff;
+    left: 10%;
+}
+.cerrar-pop{
+    position: absolute;
+    color: #081032;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 35px;
+    text-align: center;
+    right: -5%;
+    top: -20%;
+    z-index: 100;
+    font-size: 1.3em;
 }
