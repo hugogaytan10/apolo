@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './insertUser.css'
 
 export const InsertUser = () => {
     const [user, setUser] = useState(
@@ -37,6 +38,7 @@ export const InsertUser = () => {
     return (
         <div className='contenedor-registro'>
             <form>
+                <h2>REGISTRATE</h2>
                 <input placeholder='Nombre completo' className='input-registro' name='nombre' onChange={cambiarValor}></input>
                 <input placeholder='email' className='input-registro' name='email' onChange={cambiarValor}></input>
                 <input placeholder='contraseña' className='input-registro' name='contra' onChange={cambiarValor} type='password'></input>

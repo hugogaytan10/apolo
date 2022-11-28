@@ -66,12 +66,19 @@ body{
     color: black;
 }
 .no-tengo-cuenta{
-    color: #fff;
+    color: rgb(116, 116, 116);
     text-align: right;
     margin-right: 10px;
-    font-size: 1.1em;
+    font-size: 1em;
+    font-weight: bold;
     cursor: pointer;
+    transition: all .1s ease-in;
 }
+
+.no-tengo-cuenta:hover{
+    color: #fff;
+}
+
 .contenedor-registro{
     position: absolute;
     background-color:  #081032;
@@ -99,13 +106,27 @@ body{
 }
 .cerrar-pop{
     position: absolute;
-    color: #081032;
-    background-color: #fff;
-    border-radius: 50%;
+    color: #fff;
+    background-color: #081032;
+    border: 1px solid red;
+    border-radius: 100px;
     width: 35px;
+    height: 30px;
     text-align: center;
     right: -5%;
     top: -20%;
     z-index: 100;
     font-size: 1.3em;
+    font-weight: bolder;
+    transition: all .2s ease-in;
+}
+
+.cerrar-pop:hover{
+    background-color: red;
+}
+
+.contenedor-no-cuenta{
+    position: absolute;
+    top: 85%;
+    right: 1%;
 }

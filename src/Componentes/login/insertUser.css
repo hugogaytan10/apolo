@@ -1,0 +1,19 @@
+.contenedor-registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+form{
+    width: 95%;
+    display: grid;
+    place-items: center;
+}
+
+h2{
+    width: 100%;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: white;
+}
