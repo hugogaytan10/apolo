@@ -28,7 +28,9 @@ const Login = () => {
             <input type='email' placeholder='hello@email.com' className='input-login' id='mail' />
             <input type='password' placeholder='********' className='input-login' id='contrasenia'/>
             <button className='btn-login' onClick={() => { getUser(); }}>Log In</button>
-            <p onClick={()=>{setPop(true)}} className='no-tengo-cuenta'>No tengo cuenta</p>
+            <div className='contenedor-no-cuenta'>
+                <p onClick={()=>{setPop(true)}} className='no-tengo-cuenta'>No tengo cuenta</p>
+            </div>
             {
                 pop &&
                 <>

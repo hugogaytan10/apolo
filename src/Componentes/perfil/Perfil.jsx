@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../App';
+import './Perfil.css'
 
 export const Perfil = () => {
     const [user, setUser] = useState([]);
@@ -60,12 +61,15 @@ export const Perfil = () => {
         perfilUser();
     }, [usuario])
     return (
-        <div>
-            <input placeholder={user.full_name} name='nombre' onChange={cambiarValor}></input>
-            <input placeholder={user.email} name='email' onChange={cambiarValor}></input>
-            <input type='password' placeholder='password' name='pass' onChange={cambiarValor}></input>
-            <button onClick={()=>{update()}}>ACTUALIZAR</button>
-            <button onClick={()=>{deleteUser()}}>ELIMINAR</button>
+        <div class="contenedor">
+                <h2>Actualizar Información</h2>
+            <form>
+                <input placeholder={user.full_name} name='nombre' onChange={cambiarValor}></input>
+                <input placeholder={user.email} name='email' onChange={cambiarValor}></input>
+                <input type='password' placeholder='password' name='pass' onChange={cambiarValor}></input>
+                <button onClick={()=>{update()}}>ACTUALIZAR</button>
+                <button onClick={()=>{deleteUser()}}>ELIMINAR</button>
+            </form>
         </div>
     )
 }
